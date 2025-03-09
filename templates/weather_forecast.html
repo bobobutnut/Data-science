@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Forecast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>9 Day Weather Forecast</h1>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Max Temperature</th>
+        <th>Min Temperature</th>
+    </tr>
+    {% for i in range(weather_dict.date|length) %}
+    <tr>
+        <td>{{ weather_dict.date[i] }}</td>
+        <td>{{ weather_dict.max_temp[i] }}</td>
+        <td>{{ weather_dict.min_temp[i] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

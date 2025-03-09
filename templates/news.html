@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Latest News</h1>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Link</th>
+        <th>Pubdate</th>
+        <th>Description</th>
+    </tr>
+    {% for i in range(news_dict.title|length) %}
+    <tr>
+        <td>{{ news_dict.title[i] }}</td>
+        <td><a href="{{ news_dict.link[i] }}" target="_blank">Read More</a></td>
+        <td>{{ news_dict.pubDate[i] }}</td>
+        <td>{{ news_dict.description[i] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
