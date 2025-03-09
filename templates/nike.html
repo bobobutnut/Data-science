@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Football Shoes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e2e2e2;
+        }
+    </style>
+</head>
+<body>
+<h1>Shoes</h1>
+<table>
+    <tr>
+        <th>Shoe</th>
+        <th>Price</th>
+    </tr>
+    {% for i in range(shoes_dict.title|length) %}
+    <tr>
+        <td>{{ shoes_dict.title[i] }}</td>
+        <td>{{ shoes_dict.price[i] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

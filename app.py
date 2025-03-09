@@ -53,5 +53,29 @@ def show_news():
     return render_template("news.html", news_dict=news_dict)
 
 
+@app.route("/nike/<string:category>")
+def get_nike_price(category):
+    url = "https://www.nike.com.hk/man/" + category +"/shoe/list.htm?intpromo=PNTP"
+    soup_page = soup(requests.get(url).content)
+
+    product_list = soup_page.find_all("dl", {"class": "product_list_content"})
+
+    shoes_list = []
+    price_list = []
+
+    for product in product_list:
+        shoes_list.append(product.find("span", {"class": "up"}).text)
+        price_list.append(product.find("dd", {"class": "color666"}).text.split("HK$")[-1].replace(",",""))
+
+    shoes_dict = {
+        "title": shoes_list,
+        "price": price_list
+    }
+
+    return render_template("nike.html", shoes_dict=shoes_dict)
+
+@app.route("/nike_home")
+def nike_home():
+    return render_template("nike_home.html")
 if __name__ == "__main__":
     app.run(debug=True)
