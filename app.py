@@ -2,10 +2,11 @@ from flask import Flask, render_template
 import requests
 import json
 from bs4 import BeautifulSoup as soup
+import pandas as pd
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/weather")
 def index():
     url = "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=en"
     weather = json.loads(requests.get(url).content)
@@ -77,5 +78,14 @@ def get_nike_price(category):
 @app.route("/nike_home")
 def nike_home():
     return render_template("nike_home.html")
+
+@app.route("/fifa")
+def fifa():
+    return render_template("fifa.html")
+
+@app.route("/")
+def home():
+    return render_template("home.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

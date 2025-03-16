@@ -38,11 +38,35 @@
         a:hover {
             text-decoration: underline;
         }
+        #filterInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
     </style>
+    <script>
+        function filterNews() {
+            const input = document.getElementById('filterInput');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('newsTable');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) { // Start from 1 to skip the header row
+                const td = tr[i].getElementsByTagName('td')[0]; // Get the title cell
+                if (td) {
+                    const txtValue = td.textContent || td.innerText;
+                    tr[i].style.display = txtValue.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 <h1>Latest News</h1>
-<table>
+<input type="text" id="filterInput" onkeyup="filterNews()" placeholder="Filter by title..." />
+<table id="newsTable">
     <tr>
         <th>Title</th>
         <th>Link</th>
